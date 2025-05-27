@@ -49,12 +49,14 @@ export default function HomePage() {
   return (
     <div className="bg-white">
       {/* Navigation */}
-      <nav className="bg-white border-b border-gray-200 sticky top-0 z-50 backdrop-blur-xl bg-white/95">
-        <div className="container">
+      <nav className="bg-white/95 backdrop-blur-xl border-b border-gray-200 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-8">
               <div className="flex-shrink-0">
-                <h1 className="text-2xl font-bold gradient-text">DIFM</h1>
+                <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  DIFM
+                </h1>
               </div>
               <div className="hidden md:flex space-x-6">
                 <a href="#features" className="text-gray-600 hover:text-gray-900 transition-colors">Features</a>
@@ -74,8 +76,12 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-50">
-        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-        <div className="container">
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236b7280' fill-opacity='0.4'%3E%3Ccircle cx='7' cy='7' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }} />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="py-20 lg:py-28">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -87,12 +93,14 @@ export default function HomePage() {
                 <span className="badge-primary">✨ AI-Powered Website Creation</span>
               </div>
               
-              <h1 className="text-5xl lg:text-7xl font-bold text-gray-900 mb-6 text-balance">
+              <h1 className="text-5xl lg:text-7xl font-bold text-gray-900 mb-6">
                 Your Website,{' '}
-                <span className="gradient-text">Done For You</span>
+                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  Done For You
+                </span>
               </h1>
               
-              <p className="text-xl lg:text-2xl text-gray-600 mb-10 max-w-3xl mx-auto text-balance">
+              <p className="text-xl lg:text-2xl text-gray-600 mb-10 max-w-3xl mx-auto">
                 Skip the complexity. Get a professional, custom website built for your business 
                 with AI assistance and expert craftsmanship. No technical knowledge required.
               </p>
@@ -131,7 +139,7 @@ export default function HomePage() {
 
       {/* Stats Section */}
       <section className="bg-white border-y border-gray-200">
-        <div className="container">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="py-12">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
               {stats.map((stat, index) => (
@@ -153,8 +161,8 @@ export default function HomePage() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="section bg-gray-50">
-        <div className="container">
+      <section id="features" className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -162,15 +170,15 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4 text-balance">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
               Why Choose DIFM?
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto text-balance">
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               We combine AI intelligence with human expertise to deliver websites that work
             </p>
           </motion.div>
 
-          <div className="feature-grid">
+          <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
@@ -178,15 +186,15 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="feature-card"
+                className="bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-lg p-6 text-center transition-all duration-300 group"
               >
-                <div className={`feature-icon ${feature.color}`}>
+                <div className={`w-12 h-12 mx-auto mb-4 p-3 rounded-xl group-hover:scale-110 transition-transform ${feature.color}`}>
                   <feature.icon className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600 text-balance">
+                <p className="text-gray-600">
                   {feature.description}
                 </p>
               </motion.div>
@@ -196,8 +204,8 @@ export default function HomePage() {
       </section>
 
       {/* How It Works */}
-      <section id="how-it-works" className="section bg-white">
-        <div className="container">
+      <section id="how-it-works" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -205,10 +213,10 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4 text-balance">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
               How It Works
             </h2>
-            <p className="text-xl text-gray-600 text-balance">
+            <p className="text-xl text-gray-600">
               Three simple steps to get your website done
             </p>
           </motion.div>
@@ -242,15 +250,15 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 className="relative"
               >
-                <div className="card p-8 text-center h-full">
+                <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-8 text-center h-full">
                   <div className="text-4xl mb-6">{item.icon}</div>
-                  <div className="inline-flex items-center justify-center w-8 h-8 bg-primary-600 text-white rounded-full text-sm font-bold mb-6">
+                  <div className="inline-flex items-center justify-center w-8 h-8 bg-blue-600 text-white rounded-full text-sm font-bold mb-6">
                     {item.step}
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-4">
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 text-balance">
+                  <p className="text-gray-600">
                     {item.description}
                   </p>
                 </div>
@@ -267,8 +275,8 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="section bg-gradient-to-r from-primary-600 to-primary-700">
-        <div className="container">
+      <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-700">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -276,20 +284,20 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 text-balance">
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
               Ready to Get Started?
             </h2>
-            <p className="text-xl text-primary-100 mb-10 text-balance">
+            <p className="text-xl text-blue-100 mb-10">
               Join hundreds of businesses who trust us with their online presence. 
               Get your professional website in just 2-3 weeks.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/request" className="btn-primary-lg bg-white text-primary-600 hover:bg-gray-50 group">
+              <Link href="/request" className="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold bg-white text-blue-600 hover:bg-gray-50 rounded-lg shadow-md hover:shadow-lg focus:ring-2 focus:ring-offset-2 focus:ring-white transition-all duration-200 group">
                 <RocketLaunchIcon className="w-5 h-5 mr-2 group-hover:translate-x-0.5 transition-transform" />
                 Start Your Website Request
                 <ArrowRightIcon className="w-4 h-4 ml-2 group-hover:translate-x-0.5 transition-transform" />
               </Link>
-              <button className="btn-ghost text-white border-white hover:bg-white/10">
+              <button className="inline-flex items-center justify-center px-4 py-2.5 bg-transparent hover:bg-white/10 text-white border border-white rounded-lg font-medium transition-colors">
                 Schedule a Call
               </button>
             </div>
@@ -299,7 +307,7 @@ export default function HomePage() {
 
       {/* Footer */}
       <footer className="bg-gray-900 text-gray-300">
-        <div className="container">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="py-12">
             <div className="grid md:grid-cols-4 gap-8">
               <div>
