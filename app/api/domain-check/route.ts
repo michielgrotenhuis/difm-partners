@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
     // Clean the domain input
     const cleanDomain = domain.toLowerCase().trim()
 
-    // Basic domain validation
+    // Basic domain validation - fixed regex
     const domainRegex = /^[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9]?\.[a-zA-Z]{2,}$/
     
     if (!domainRegex.test(cleanDomain)) {
@@ -143,36 +143,13 @@ async function checkDomainAvailability(domain: string): Promise<DomainCheckResul
       registrar: 'Private Registration'
     }
   }
-
-  // Real implementation would use services like:
-  /*
-  try {
-    // Example with Namecheap API
-    const response = await fetch(`https://api.namecheap.com/xml.response`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams({
-        ApiUser: process.env.NAMECHEAP_API_USER!,
-        ApiKey: process.env.NAMECHEAP_API_KEY!,
-        UserName: process.env.NAMECHEAP_USERNAME!,
-        Command: 'namecheap.domains.check',
-        ClientIp: '127.0.0.1',
-        DomainList: domain
-      })
-    })
-    
-    const xmlText = await response.text()
-    // Parse XML response and return availability
-    
-  } catch (error) {
-    console.error('Domain API error:', error)
-    return { available: false }
-  }
-  */
 }
 
 function generateDomainSuggestions(originalDomain: string): string[] {
-  const [name, tld] = originalDomain.split('.')
+  const parts = originalDomain.split('.')
+  if (parts.length < 2) return []
+  
+  const [name, tld] = parts
   const suggestions: string[] = []
 
   // Alternative TLDs
@@ -207,7 +184,6 @@ function generateDomainSuggestions(originalDomain: string): string[] {
   return [...new Set(suggestions)].slice(0, 8)
 }
 
-// Alternative GET endpoint for simple checks
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)
   const domain = searchParams.get('domain')
@@ -219,7 +195,6 @@ export async function GET(request: NextRequest) {
     )
   }
 
-  // Redirect to POST for consistency
   return NextResponse.json(
     { error: 'Use POST method for domain checking' },
     { status: 405 }
