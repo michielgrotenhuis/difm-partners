@@ -55,7 +55,7 @@ export default function WizardStep1({ formData, updateFormData }: Props) {
     <div>
       <div className="mb-8">
         <h2 className="text-2xl font-bold text-gray-900 mb-3">
-          What&apos;s the main goal of your website?
+          What is the main goal of your website?
         </h2>
         <p className="text-gray-600">
           This helps us understand your needs and suggest the right features for your project.
@@ -69,7 +69,7 @@ export default function WizardStep1({ formData, updateFormData }: Props) {
             onClick={() => updateFormData({ websiteGoal: goal.id })}
             className={`p-4 rounded-lg border-2 text-left transition-all duration-200 ${
               formData.websiteGoal === goal.id
-                ? 'border-primary-500 bg-primary-50'
+                ? 'border-blue-500 bg-blue-50'
                 : 'border-gray-200 hover:border-gray-300 bg-white'
             }`}
           >
@@ -97,7 +97,7 @@ export default function WizardStep1({ formData, updateFormData }: Props) {
             value={formData.businessInfo}
             onChange={(e) => updateFormData({ businessInfo: e.target.value })}
             placeholder="Describe what you want to achieve with your website..."
-            className="form-textarea"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-vertical min-h-[100px]"
             rows={4}
           />
         </div>
