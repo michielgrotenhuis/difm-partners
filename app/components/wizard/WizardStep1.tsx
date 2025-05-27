@@ -52,7 +52,35 @@ export default function WizardStep1({ formData, updateFormData }: Props) {
   ]
 
   return (
-    <div>
+                    <div>
+                  <h3 className="font-semibold text-gray-900 mb-1">
+                    {goal.title}
+                  </h3>
+                  <p className="text-sm text-gray-600">
+                    {goal.description}
+                  </p>
+                </div>
+              </div>
+            </button>
+          ))}
+        </div>
+
+        {formData.websiteGoal === 'other' && (
+          <div className="mt-6">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Tell us more about your website goal
+            </label>
+            <textarea
+              value={formData.businessInfo}
+              onChange={(e) => updateFormData({ businessInfo: e.target.value })}
+              placeholder="Describe what you want to achieve with your website..."
+              className="form-textarea"
+              rows={4}
+            />
+          </div>
+        )}
+      </div>
+    )
       <div className="mb-8">
         <h2 className="text-2xl font-bold text-gray-900 mb-3">
           What's the main goal of your website?
