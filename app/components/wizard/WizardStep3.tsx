@@ -135,7 +135,7 @@ export default function WizardStep3({ formData, updateFormData }: Props) {
           </h3>
           <button
             onClick={() => updateFormData({ features: recommendedFeatures })}
-            className="text-sm text-blue-600 hover:text-blue-700 underline"
+            className="text-sm text-blue-600 hover:text-blue-700 underline font-medium"
           >
             Select all recommended features
           </button>
@@ -151,21 +151,21 @@ export default function WizardStep3({ formData, updateFormData }: Props) {
             <button
               key={feature.id}
               onClick={() => toggleFeature(feature.id)}
-              className={`p-4 rounded-lg border-2 text-left transition-all duration-200 relative ${
+              className={`p-4 rounded-lg border-2 text-left transition-all duration-200 relative group ${
                 isSelected
-                  ? 'border-primary-500 bg-primary-50'
-                  : 'border-gray-200 hover:border-gray-300 bg-white'
+                  ? 'border-blue-500 bg-blue-50 shadow-sm'
+                  : 'border-gray-200 hover:border-gray-300 bg-white hover:shadow-sm'
               }`}
             >
               {isRecommended && (
-                <div className="absolute -top-2 -right-2 bg-yellow-400 text-yellow-800 text-xs px-2 py-1 rounded-full font-medium">
+                <div className="absolute -top-2 -right-2 bg-yellow-400 text-yellow-800 text-xs px-2 py-1 rounded-full font-medium shadow-sm">
                   Recommended
                 </div>
               )}
               
               <div className="flex items-start gap-3">
-                <span className="text-2xl">{feature.icon}</span>
-                <div className="flex-1">
+                <span className="text-2xl flex-shrink-0">{feature.icon}</span>
+                <div className="flex-1 min-w-0">
                   <h3 className="font-semibold text-gray-900 mb-1">
                     {feature.title}
                   </h3>
@@ -175,7 +175,7 @@ export default function WizardStep3({ formData, updateFormData }: Props) {
                 </div>
                 
                 {isSelected && (
-                  <div className="w-5 h-5 bg-primary-600 rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-5 h-5 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
                     <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
@@ -188,16 +188,17 @@ export default function WizardStep3({ formData, updateFormData }: Props) {
       </div>
 
       {formData.features && formData.features.length > 0 && (
-        <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-          <h3 className="font-medium text-green-800 mb-2">
+        <div className="mt-8 p-4 bg-green-50 border border-green-200 rounded-lg">
+          <h3 className="font-medium text-green-800 mb-3">
             Selected Features ({formData.features.length})
           </h3>
           <div className="flex flex-wrap gap-2">
             {formData.features.map(featureId => {
               const feature = features.find(f => f.id === featureId)
               return feature ? (
-                <span key={featureId} className="bg-green-100 text-green-800 px-2 py-1 rounded text-sm">
-                  {feature.icon} {feature.title}
+                <span key={featureId} className="inline-flex items-center bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                  <span className="mr-1">{feature.icon}</span>
+                  {feature.title}
                 </span>
               ) : null
             })}
