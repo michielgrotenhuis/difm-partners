@@ -52,38 +52,10 @@ export default function WizardStep1({ formData, updateFormData }: Props) {
   ]
 
   return (
-                    <div>
-                  <h3 className="font-semibold text-gray-900 mb-1">
-                    {goal.title}
-                  </h3>
-                  <p className="text-sm text-gray-600">
-                    {goal.description}
-                  </p>
-                </div>
-              </div>
-            </button>
-          ))}
-        </div>
-
-        {formData.websiteGoal === 'other' && (
-          <div className="mt-6">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Tell us more about your website goal
-            </label>
-            <textarea
-              value={formData.businessInfo}
-              onChange={(e) => updateFormData({ businessInfo: e.target.value })}
-              placeholder="Describe what you want to achieve with your website..."
-              className="form-textarea"
-              rows={4}
-            />
-          </div>
-        )}
-      </div>
-    )
+    <div>
       <div className="mb-8">
         <h2 className="text-2xl font-bold text-gray-900 mb-3">
-          What's the main goal of your website?
+          What&apos;s the main goal of your website?
         </h2>
         <p className="text-gray-600">
           This helps us understand your needs and suggest the right features for your project.
@@ -104,3 +76,32 @@ export default function WizardStep1({ formData, updateFormData }: Props) {
             <div className="flex items-start gap-3">
               <span className="text-2xl">{goal.icon}</span>
               <div>
+                <h3 className="font-semibold text-gray-900 mb-1">
+                  {goal.title}
+                </h3>
+                <p className="text-sm text-gray-600">
+                  {goal.description}
+                </p>
+              </div>
+            </div>
+          </button>
+        ))}
+      </div>
+
+      {formData.websiteGoal === 'other' && (
+        <div className="mt-6">
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Tell us more about your website goal
+          </label>
+          <textarea
+            value={formData.businessInfo}
+            onChange={(e) => updateFormData({ businessInfo: e.target.value })}
+            placeholder="Describe what you want to achieve with your website..."
+            className="form-textarea"
+            rows={4}
+          />
+        </div>
+      )}
+    </div>
+  )
+}
