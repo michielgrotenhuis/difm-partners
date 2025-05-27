@@ -1,0 +1,51 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model WebsiteRequest {
+  id              String   @id @default(cuid())
+  
+  // Basic Info
+  businessName    String?
+  businessInfo    String
+  websiteGoal     String
+  
+  // Features & Content
+  features        Json     // Array of selected features
+  hasContent      Boolean  @default(false)
+  contentFiles    Json?    // Array of uploaded file info
+  
+  // Design
+  designStyle     String?
+  designReferences Json?   // Array of reference URLs
+  
+  // Technical
+  domainName      String?
+  budget          Int?     // In cents/euros
+  timeline        DateTime?
+  
+  // Contact
+  contactName     String
+  contactEmail    String
+  contactPhone    String?
+  
+  // AI Generated
+  aiSummary       String?
+  aiQuote         Json?    // Quote breakdown
+  aiDemoUrl       String?
+  
+  // Meta
+  status          String   @default("pending") // pending, reviewed, approved, rejected
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  @@map("website_requests")
+}
