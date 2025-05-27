@@ -1,18 +1,5 @@
 {
   "framework": "nextjs",
-  "buildCommand": "npm run build",
-  "devCommand": "npm run dev",
-  "installCommand": "npm install",
-  "env": {
-    "OPENAI_API_KEY": "@openai-api-key",
-    "DATABASE_URL": "@database-url"
-  },
-  "build": {
-    "env": {
-      "OPENAI_API_KEY": "@openai-api-key",
-      "DATABASE_URL": "@database-url"
-    }
-  },
   "functions": {
     "app/api/**/*.ts": {
       "maxDuration": 30
