@@ -1,0 +1,10 @@
+// Export all wizard components for easy importing
+export { default as WizardStep1 } from './WizardStep1'
+export { default as WizardStep2 } from './WizardStep2'
+export { default as WizardStep3 } from './WizardStep3'
+export { default as WizardStep4 } from './WizardStep4'
+export { default as WizardStep5 } from './WizardStep5'
+export { default as WizardStep6 } from './WizardStep6'
+export { default as WizardStep7 } from './WizardStep7'
+export { default as WizardStep8 } from './WizardStep8'
+export { default as WizardSummary } from './WizardSummary'
